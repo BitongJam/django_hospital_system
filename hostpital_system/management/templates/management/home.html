@@ -1,0 +1,11 @@
+{% extends 'management/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>Hospital System</h1>
+<ul>
+    <li><a href="{% url 'patients' %}">View Patients</a></li>
+    <li><a href="{% url 'doctors' %}">View Doctors</a></li>
+</ul>
+{% endblock %}
