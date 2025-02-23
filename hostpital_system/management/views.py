@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect,get_object_or_404
 from .models import Patient, Doctor
-from .forms import PatientForm
+from .forms import PatientForm, DoctorForm
 
 # Create your views here.
 def home(request):
@@ -43,3 +43,14 @@ def delete_patient(request, pk):
         patient.delete()
         return redirect('patients')
     return render(request, 'management/delete_patient.html', {'patient': patient})
+
+def add_doctor(request):
+    if request.method == 'POST':
+        form = DoctorForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('doctors')
+        else:
+            return render(request, 'management/add_doctor.html', {'form': form})
+
+    return render(request, 'management/add_doctor.html')
