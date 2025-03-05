@@ -54,3 +54,22 @@ def add_doctor(request):
             return render(request, 'management/add_doctor.html', {'form': form})
 
     return render(request, 'management/add_doctor.html')
+
+def delete_doctor(request, pk):
+    doctor = get_object_or_404(Doctor, pk=pk)
+    if request.method == 'POST':
+        doctor.delete()
+        return redirect('doctors')
+    return render(request, 'management/delete_patient.html', {'doctors': doctor})
+
+
+def edit_doctor(request, pk):
+    doctor = get_object_or_404(Doctor, pk=pk)
+    if request.method == 'POST':
+        form = PatientForm(request.POST, instance=doctor)
+        if form.is_valid():
+            form.save()
+            return redirect('doctors')
+    else:
+        form = PatientForm(instance=doctor)
+    return render(request, 'management/edit_patient.html', {'form': form, 'doctor': doctor})

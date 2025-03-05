@@ -23,8 +23,8 @@
             <td>{{ doctor.speiclization }}</td>
             <td>{{ doctor.contact }}</td>
             <td>
-                <a href="#" class="btn btn-warning">Edit</a>
-                <a href="#" class="btn btn-danger">Delete</a>
+                <a href="{% url 'edit_doctor' doctor.id %}" class="btn btn-warning">Edit</a>
+                <a href="{% url 'delete_doctor' doctor.id %}" class="btn btn-danger">Delete</a>
             </td>
         </tr>
         {% endfor %}

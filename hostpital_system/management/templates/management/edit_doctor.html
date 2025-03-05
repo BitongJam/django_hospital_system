@@ -1,0 +1,15 @@
+{% extends 'management/base.html' %}
+
+{% block title %}Edit Doctor{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h2>Edit Doctor</h2>
+        <form method="post" class="form-group">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Update Doctor</button>
+                <a href="{% url 'doctors' %}" class="btn btn-secondary">Cancel</a>
+            </form>
+    </div>
+{% endblock %}
